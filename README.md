@@ -1,1 +1,1 @@
-# Firewall-DMZLab
+# Firewall & DMZ Lab
