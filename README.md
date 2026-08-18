@@ -8,7 +8,7 @@ This lab builds upon the previous Active Directory project by deploying an OPNse
 * **Firewall:** OPNsense 26.7
 * **Operating Systems:** Windows Server 2022 (`DC01`, `WEBSERVER01`), Windows 11 Enterprise (`CLIENT01`)
 * **Core Technologies:**
-  * IIS Web Server
+  * Internet Information Services (IIS) Web Server
   * DNS Manager (Forwarders)
   
 
