@@ -124,9 +124,20 @@ This lab builds upon the previous Active Directory project by deploying an OPNse
 <br>
 
 ### 🔹 Phase 3: LAN1 Traffic Access Control
-1. Installed Windows Server 2022 on a virtual machine named `DC01`. *(Figure 1.1)*
+1. **DNS access:** Configured a rule allowing DNS traffic (TCP/UDP port `53`) from `LAN1 net` to the firewall's `LAN1 address`, permitting clients to use OPNsense for filtered DNS resolution. *(Figure 3.1)*
 
-2. Configured a permanent static IPv4 address on the server. *(Figure 1.2)*
+2. **Microsoft access:** Configured a rule allowing TCP/UDP traffic from `LAN1 net` to the `Microsoft_Updates` alias over the `Web_Ports` alias (`80`/`443`), permitting required Microsoft traffic for necessary client updates while restricting general internet access. *(Figure 3.1)*
+
+3. **Ping access:** Configured a rule allowing ICMP traffic from `LAN1 net` to the firewall's `LAN1 address`, permitting connectivity testing and troubleshooting. *(Figure 3.1)*
+
+4. **Default deny:** Configured a final explicit deny rule to block all remaining traffic originating from `LAN1 net`. *(Figure 3.1)*
+
+5. **Verified allowed traffic:** Used Powershell `Test-NetConnection` to verify that a whitelisted Microsoft domain was accessible over the configured web ports.
+
+>[!NOTE]
+>
+
+6. 
 
 <br>
 
