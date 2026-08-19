@@ -126,18 +126,18 @@ This lab builds upon the previous Active Directory project by deploying an OPNse
 ### 🔹 Phase 3: LAN1 Traffic Access Control
 1. **DNS access:** Configured a rule allowing DNS traffic (TCP/UDP port `53`) from `LAN1 net` to the firewall's `LAN1 address`, permitting clients to use OPNsense for filtered DNS resolution. *(Figure 3.1)*
 
-2. **Microsoft access:** Configured a rule allowing TCP/UDP traffic from `LAN1 net` to the `Microsoft_Updates` alias over the `Web_Ports` alias (`80`/`443`), permitting required Microsoft traffic for necessary client updates while restricting general internet access. *(Figure 3.1)*
+2. **Microsoft access:** Configured a rule allowing TCP/UDP traffic from `LAN1 net` to the `Microsoft_Updates` alias over the `Web_Ports` alias (`80`/`443`), permitting Microsoft traffic required for client updates while restricting general internet access. *(Figure 3.1)*
 
 3. **Ping access:** Configured a rule allowing ICMP traffic from `LAN1 net` to the firewall's `LAN1 address`, permitting connectivity testing and troubleshooting. *(Figure 3.1)*
 
 4. **Default deny:** Configured a final explicit deny rule to block all remaining traffic originating from `LAN1 net`. *(Figure 3.1)*
 
-5. **Verified allowed traffic:** Used Powershell `Test-NetConnection` to verify that a whitelisted Microsoft domain was accessible over the configured web ports.
+5. **Verified allowed traffic:** Used PowerShell `Test-NetConnection` to verify that a whitelisted Microsoft domain was accessible over the configured web ports. *(Figure 3.2)*
 
 >[!NOTE]
->
+> I originally tried to verify access to the Microsoft domain through a web browser; however, the page did not load. Upon troubleshooting the issue, I found that Microsoft pages load additional dependencies that were not explicitly included in my `Microsoft_Updates` whitelist, resulting in the page failing to load. Therefore, I used PowerShell's `Test-NetConnection` command to verify that a direct TCP connection to the domain could be established.
 
-6. 
+6. **Verified blocked traffic:** Attempted to access `facebook.com` from the `LAN1` client, confirming that traffic outside the permitted rules was blocked. *(Figure 3.3)*
 
 <br>
 
