@@ -163,9 +163,19 @@ This lab builds upon the previous Active Directory project by deploying an OPNse
 <br>
 
 ### 🔹 Phase 4: LAN2 Traffic Access Control & DMZ Deployment
-1. . *(Figure 4.1)*
+1. Deployed the IIS Web Server role on `WEBSERVER01`, a Windows Server 2022 VM, and configured its network adapter to use the OPNsense `LAN2` interface (`192.168.65.1`) as both the default gateway and DNS server. *(Figure 4.1)*
 
-2. . *(Figure 4.2)*
+2. Created a custom HTML page displaying **"Welcome to the isolated DMZ web server!"** and configured IIS to prioritize the page by moving the HTML file to the top of the Default Document list. *(Figure 4.2 & Figure 4.3)*
+
+3. **LAN2 internet access:** Configured a temporary maintenance rule allowing traffic from `LAN2 net` to the internet over the `Web_Ports` alias (`80`/`443`) to permit necessary web-based updates. The rule remained disabled until needed to maintain DMZ restrictions. *(Figure 4.4)*
+
+4. **LAN2-to-LAN1 isolation:** Configured a rule blocking all traffic from `LAN2 net` to `LAN1 net`, preventing the DMZ web server from initiating any connections to the internal LAN. *(Figure 4.4)*
+
+5. **Verified DMZ isolation:** Verified the LAN2-to-LAN1 restriction through firewall logs, which showed ping attempts from the DMZ being blocked. *(Figure 4.5)*
+
+6. **Published DMZ web server:** Configured a DNAT port forwarding rule on the `WAN` interface to redirect incoming HTTP traffic to `WEBSERVER01` on the DMZ network, allowing external access to the webpage. *(Figure 4.6)*
+
+7. **Verified external access:** Accessed the DMZ web server from the host PC using the OPNsense `WAN` address, successfully displaying the custom IIS webpage. *(Figure 4.7)*
 
 <br>
 
@@ -173,7 +183,7 @@ This lab builds upon the previous Active Directory project by deploying an OPNse
  <summary>📸 Click to view Phase 4 Screenshots</summary>
   <br>
   <p align="center">
- <img width="462" height="554" alt="webserver-dns-settings" src="https://github.com/user-attachments/assets/bdfca2e2-9209-4d0b-b1f5-efe60731f9f6" />
+  <img width="462" height="554" alt="webserver-dns-settings" src="https://github.com/user-attachments/assets/bdfca2e2-9209-4d0b-b1f5-efe60731f9f6" />
    <br>
    <b>Figure 4.1</b>
    <br><br>
