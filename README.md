@@ -14,7 +14,7 @@ This lab builds upon the previous Active Directory project by deploying an OPNse
 ## 🌐 Network Overview
 | Component | IP Address | Role |
 |---|---|---|
-| OPNsense WAN | `192.168.68.56` | WAN |
+| OPNsense WAN | DHCP | WAN |
 | OPNsense LAN1 | `192.168.64.1` | Internal LAN Gateway |
 | DC01 | `192.168.64.128` | DC / DNS / DHCP |
 | CLIENT01 | DHCP | LAN1 Client |
