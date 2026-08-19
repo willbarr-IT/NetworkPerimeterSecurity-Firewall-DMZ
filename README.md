@@ -145,13 +145,17 @@ This lab builds upon the previous Active Directory project by deploying an OPNse
  <summary>📸 Click to view Phase 3 Screenshots</summary>
   <br>
   <p align="center">
-   <img width="602" height="155" alt="VM_systeminfo" src="https://github.com/user-attachments/assets/c4ba08e6-bb30-4b47-ab76-cd633450de8f" />
+    <img width="1615" height="793" alt="LAN1_FW_Rules" src="https://github.com/user-attachments/assets/60dcc0ec-6436-4c3e-bdfa-3618ab6df185" />
    <br>
    <b>Figure 3.1</b>
    <br><br>
-   <img width="397" height="451" alt="DNS_config_after" src="https://github.com/user-attachments/assets/977262a1-b54f-4462-a4b4-bbc3720e70cf" />
+   <img width="827" height="187" alt="Whitelisted_Domains_verify" src="https://github.com/user-attachments/assets/4d7f8cf4-c1fe-4ba0-a199-955adcff4385" />
    <br>
    <b>Figure 3.2</b>
+   <br><br>
+    <img width="917" height="917" alt="Implicit-Deny_verify" src="https://github.com/user-attachments/assets/59a8555d-9d37-4510-a452-aa3eada1d0ae" />
+   <br>
+   <b>Figure 3.3</b>
    <br><br>
 </p>
 </details>
@@ -159,9 +163,9 @@ This lab builds upon the previous Active Directory project by deploying an OPNse
 <br>
 
 ### 🔹 Phase 4: LAN2 Traffic Access Control & DMZ Deployment
-1. Installed Windows Server 2022 on a virtual machine named `DC01`. *(Figure 1.1)*
+1. . *(Figure 1.1)*
 
-2. Configured a permanent static IPv4 address on the server. *(Figure 1.2)*
+2. . *(Figure 1.2)*
 
 <br>
 
