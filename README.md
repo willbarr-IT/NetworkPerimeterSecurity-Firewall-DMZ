@@ -80,7 +80,6 @@ This lab builds upon the previous Active Directory project by deploying an OPNse
 
 6. Verified the DNAT rule and blocklists by executing `nslookup` on the blocked domain `doubleclick.net` through Google's public DNS server (`8.8.8.8`). The query returned `0.0.0.0`, demonstrating that the request was intercepted and blocked by the firewall. *(Figure 2.8)*
 
-
 <br>
 
 <details>
