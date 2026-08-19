@@ -76,7 +76,7 @@ This lab builds upon the previous Active Directory project by deploying an OPNse
 
 4. Added and enabled Hagezi's PRO++, Threat Intelligence Feeds, and DoH/VPN/TOR/Proxy Bypass blocklists to provide enhanced protection against malicious domains while preventing users from bypassing local network policy. *(Figure 2.6)*
 
-5. Configured a DNAT (Destination Network Address Translation) rule redirecting any non-local DNS queries from the `LAN1` network back to the firewall's local DNS resolver to further enforce DNS filtering. *(Figure 2.7)*
+5. Configured a DNAT (Destination Network Address Translation) rule redirecting any non-local DNS queries originating from the `LAN1` network back to the firewall's local DNS resolver to further enforce DNS filtering. *(Figure 2.7)*
 
 6. Verified the DNAT rule and blocklists by executing `nslookup` on the blocked domain `doubleclick.net` through Google's public DNS server (`8.8.8.8`). The query returned `0.0.0.0`, demonstrating that the request was intercepted and blocked by the firewall. *(Figure 2.8)*
 
