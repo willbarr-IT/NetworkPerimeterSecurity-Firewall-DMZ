@@ -15,10 +15,10 @@ This lab builds upon the previous Active Directory project by deploying an OPNse
 | Component | IP Address | Role |
 |---|---|---|
 | OPNsense WAN | DHCP | WAN |
-| OPNsense LAN1 | `192.168.64.1` | Internal LAN Gateway |
+| OPNsense LAN1 | `192.168.64.1/24` | Internal LAN Gateway |
 | DC01 | `192.168.64.128` | DC / DNS / DHCP |
 | CLIENT01 | DHCP | LAN1 Client |
-| OPNsense LAN2 | `192.168.65.1` | DMZ Gateway |
+| OPNsense LAN2 | `192.168.65.1/24` | DMZ Gateway |
 | WEBSERVER01 | `192.168.65.10` | DMZ Web Server |
 
 ## 🚀 Lab Walk-through
@@ -74,7 +74,7 @@ This lab builds upon the previous Active Directory project by deploying an OPNse
 
 3. Configured Quad9's public DNS servers (`9.9.9.9` and `149.112.112.112`) as the upstream DNS servers to provide security-focused name resolution and ensured that query forwarding was enabled in Unbound's DNS settings. *(Figure 2.4 & Figure 2.5)*
 
-4. Added and enabled Hagezi's PRO++, Threat Intelligence Feeds, and DoH/VPN/TOR/Proxy Bypass blocklists to provide enhanced protection against malicious domains while preventing users from bypassing local network policy. *(Figure 2.6)*
+4. Added and enabled HaGeZi's PRO++, Threat Intelligence Feeds, and DoH/VPN/TOR/Proxy Bypass blocklists to provide enhanced protection against malicious domains while preventing users from bypassing local network policy. *(Figure 2.6)* 
 
 5. Configured a DNAT (Destination Network Address Translation) rule redirecting any non-local DNS queries originating from the `LAN1` network back to the firewall's local DNS resolver to further enforce DNS filtering. *(Figure 2.7)*
 
