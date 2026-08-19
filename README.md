@@ -163,9 +163,9 @@ This lab builds upon the previous Active Directory project by deploying an OPNse
 <br>
 
 ### 🔹 Phase 4: LAN2 Traffic Access Control & DMZ Deployment
-1. . *(Figure 1.1)*
+1. . *(Figure 4.1)*
 
-2. . *(Figure 1.2)*
+2. . *(Figure 4.2)*
 
 <br>
 
@@ -173,13 +173,33 @@ This lab builds upon the previous Active Directory project by deploying an OPNse
  <summary>📸 Click to view Phase 4 Screenshots</summary>
   <br>
   <p align="center">
-   <img width="602" height="155" alt="VM_systeminfo" src="https://github.com/user-attachments/assets/c4ba08e6-bb30-4b47-ab76-cd633450de8f" />
+ <img width="462" height="554" alt="webserver-dns-settings" src="https://github.com/user-attachments/assets/bdfca2e2-9209-4d0b-b1f5-efe60731f9f6" />
    <br>
    <b>Figure 4.1</b>
    <br><br>
-   <img width="397" height="451" alt="DNS_config_after" src="https://github.com/user-attachments/assets/977262a1-b54f-4462-a4b4-bbc3720e70cf" />
+  <img width="975" height="414" alt="html-doc" src="https://github.com/user-attachments/assets/26c9d413-db14-49f9-b7c4-f9b9db7e9349" />
    <br>
    <b>Figure 4.2</b>
+   <br><br>
+   <img width="709" height="587" alt="moving-index-file-top" src="https://github.com/user-attachments/assets/c080d4ef-9fe9-4c6c-b249-f9f3de08186c" />
+   <br>
+   <b>Figure 4.3</b>
+   <br><br>
+   <img width="1313" height="558" alt="LAN2_FWrules" src="https://github.com/user-attachments/assets/069e8faf-1db5-416e-bfc0-e12669820895" />
+   <br>
+   <b>Figure 4.4</b>
+   <br><br>
+   <img width="2006" height="180" alt="LAN2-Isolation-Check-Log" src="https://github.com/user-attachments/assets/52b53dd0-7c58-41a5-814e-af36803a1422" />
+   <br>
+   <b>Figure 4.5</b>
+   <br><br>
+  <img width="1330" height="468" alt="PortFowarding-FW-Webserver" src="https://github.com/user-attachments/assets/b97efbcb-7b1a-41c5-8832-85323f79d353" />
+   <br>
+   <b>Figure 4.6</b>
+   <br><br>
+     <img width="1149" height="397" alt="HostPc-DMZ" src="https://github.com/user-attachments/assets/1ebdebd0-52ec-4fac-94fc-56f1bb096ce1" />
+   <br>
+   <b>Figure 4.7</b>
    <br><br>
 </p>
 </details>
