@@ -26,9 +26,9 @@ This lab builds upon the previous Active Directory project by deploying an OPNse
 ### 🔹 Phase 1: Initial Firewall Deployment & Configuration
 1. Deployed a three-interface firewall on a virtual machine and created a strong new password in the OPNsense UI. *(Figure 1.1 & Figure 1.2)*
 
-2. Assigned IPs to the two LAN interfaces with LAN1 as `192.168.64.1` and LAN2 as `192.168.65.1`. *(Figure 1.3)*
+2. Assigned IPs to the two LAN interfaces with `LAN1` as `192.168.64.1` and `LAN2` as `192.168.65.1`. *(Figure 1.3)*
 
-3. Configured network adapter settings on `DC01` with LAN1 as the default gateway and configured the OPNsense LAN1 address as the DNS forwarder. *(Figure 1.4 & Figure 1.5)*
+3. Configured network adapter settings on `DC01` with the OPNsense `LAN1` address as the default gateway and DNS forwarder. *(Figure 1.4 & Figure 1.5)*
 
 4. Verified connectivity to the firewall by executing `ping` and `nslookup`. *(Figure 1.6)* 
 
@@ -68,9 +68,18 @@ This lab builds upon the previous Active Directory project by deploying an OPNse
 <br>
 
 ### 🔹 Phase 2: Firewall Object Creation & DNS Filtering
-1. Installed Windows Server 2022 on a virtual machine named `DC01`. *(Figure 1.1)*
+1. Created a `Microsoft_Updates` alias containing verified Microsoft domains used for client updates within the OPNsense web GUI. Verified the alias populated with the corresponding IP addresses for the configured domains. *(Figure 2.1 & Figure 2.2)*
 
-2. Configured a permanent static IPv4 address on the server. *(Figure 1.2)*
+2. Created a `Web_Ports` alias containing both port `80` (HTTP) and `443` (HTTPS) for ease of use in later configuration of firewall rules. *(Figure 2.3)*
+
+3. Configured Quad9's public DNS servers (`9.9.9.9` and `149.112.112.112`) as the upstream DNS servers to provide security-focused name resolution and ensured that query forwarding was enabled in Unbound's DNS settings. *(Figure 2.4 & Figure 2.5)*
+
+4. Added and enabled Hagezi's PRO++, Threat Intelligence Feeds, and DoH/VPN/TOR/Proxy Bypass blocklists to provide enhanced protection against malicious domains while preventing users from bypassing local network policy. *(Figure 2.6)*
+
+5. Configured a DNAT (Destination Network Address Translation) rule redirecting any non-local DNS queries from the `LAN1` network back to the firewall's local DNS resolver to further enforce DNS filtering. *(Figure 2.7)*
+
+6. Verified the DNAT rule and blocklists by executing `nslookup` on the blocked domain `doubleclick.net` through Google's public DNS server (`8.8.8.8`). The query returned `0.0.0.0`, demonstrating that the request was intercepted and blocked by the firewall. *(Figure 2.8)*
+
 
 <br>
 
@@ -78,13 +87,37 @@ This lab builds upon the previous Active Directory project by deploying an OPNse
  <summary>📸 Click to view Phase 2 Screenshots</summary>
   <br>
   <p align="center">
-   <img width="602" height="155" alt="VM_systeminfo" src="https://github.com/user-attachments/assets/c4ba08e6-bb30-4b47-ab76-cd633450de8f" />
+  <img width="1000" height="740" alt="MS_Updates_Aliases" src="https://github.com/user-attachments/assets/25b9b702-4ec7-4dba-99df-1ffdf0bf8239" />
    <br>
    <b>Figure 2.1</b>
    <br><br>
-   <img width="397" height="451" alt="DNS_config_after" src="https://github.com/user-attachments/assets/977262a1-b54f-4462-a4b4-bbc3720e70cf" />
+  <img width="477" height="810" alt="FW_Diagnostics_MSupdates" src="https://github.com/user-attachments/assets/74fa400e-2de8-41f3-a1ac-430f8a9b9060" />
    <br>
    <b>Figure 2.2</b>
+   <br><br>
+  <img width="866" height="621" alt="Web_Ports_Aliases" src="https://github.com/user-attachments/assets/9769aecd-85fd-41ba-be6f-f24199434407" />
+   <br>
+   <b>Figure 2.3</b>
+   <br><br>
+  <img width="1028" height="887" alt="upstream-dns" src="https://github.com/user-attachments/assets/12d1caea-ca1e-43c0-b96f-08adb670f8b0" />
+   <br>
+   <b>Figure 2.4</b>
+   <br><br>
+ <img width="635" height="337" alt="dns-query-forwarding" src="https://github.com/user-attachments/assets/7ce034f4-dba1-456a-9e57-4c831af36af4" />
+   <br>
+   <b>Figure 2.5</b>
+   <br><br>
+ <img width="1466" height="492" alt="Blocklists" src="https://github.com/user-attachments/assets/c7a12cc0-c7c2-46ce-ad81-b1d4d4b5cf3a" />
+   <br>
+   <b>Figure 2.6</b>
+   <br><br>
+ <img width="1290" height="422" alt="Redirect_non-local-DNS" src="https://github.com/user-attachments/assets/89a2cf4f-71aa-449a-8b17-2ab7fc5db647" />
+   <br>
+   <b>Figure 2.7</b>
+   <br><br>
+  <img width="558" height="320" alt="Hagezi_tests" src="https://github.com/user-attachments/assets/6e45ad23-1fc6-41ff-943c-a053ab2d860a" />
+   <br>
+   <b>Figure 2.8</b>
    <br><br>
 </p>
 </details>
