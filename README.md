@@ -76,7 +76,7 @@ This lab builds upon the previous Active Directory project by deploying an OPNse
 
 4. Added and enabled HaGeZi's PRO++, Threat Intelligence Feeds, and DoH/VPN/TOR/Proxy Bypass blocklists to provide enhanced protection against malicious domains while preventing users from bypassing local network policy. *(Figure 2.6)* 
 
-5. Configured a DNAT (Destination Network Address Translation) rule redirecting any non-local DNS queries originating from the `LAN1` network back to the firewall's local DNS resolver to further enforce DNS filtering. *(Figure 2.7)*
+5. Configured DNAT (Destination Network Address Translation) rules redirecting any non-local DNS queries originating from the `LAN1` and `LAN2` network back to the firewall's local DNS resolver to further enforce DNS filtering. *(Figure 2.7)*
 
 6. Verified the DNAT rule and blocklists by executing `nslookup` on the blocked domain `doubleclick.net` through Google's public DNS server (`8.8.8.8`). The query returned `0.0.0.0`, demonstrating that the request was intercepted and blocked by the firewall. *(Figure 2.8)*
 
@@ -110,7 +110,7 @@ This lab builds upon the previous Active Directory project by deploying an OPNse
    <br>
    <b>Figure 2.6</b>
    <br><br>
- <img width="1290" height="422" alt="Redirect_non-local-DNS" src="https://github.com/user-attachments/assets/89a2cf4f-71aa-449a-8b17-2ab7fc5db647" />
+ <img width="1893" height="405" alt="LAN2-DNS-redirect" src="https://github.com/user-attachments/assets/fa84f6f5-4818-4419-952a-3a38ee8d2589" />
    <br>
    <b>Figure 2.7</b>
    <br><br>
@@ -167,15 +167,17 @@ This lab builds upon the previous Active Directory project by deploying an OPNse
 
 2. Created a custom HTML page displaying **"Welcome to the isolated DMZ web server!"** and configured IIS to prioritize the page by moving the HTML file to the top of the Default Document list. *(Figure 4.2 & Figure 4.3)*
 
-3. **LAN2 internet access:** Configured a temporary maintenance rule allowing traffic from `LAN2 net` to the internet over the `Web_Ports` alias (`80`/`443`) to permit necessary web-based updates. The rule remained disabled until needed to maintain DMZ restrictions. *(Figure 4.4)*
+3. **LAN2 DNS access:** Configured a rule allowing DNS traffic (TCP/UDP port `53`) from `LAN2 net` to the firewall's `LAN2 address`, permitting the web server to use OPNsense for filtered DNS resolution. *(Figure 4.4)*
 
-4. **LAN2-to-LAN1 isolation:** Configured a rule blocking all traffic from `LAN2 net` to `LAN1 net`, preventing the DMZ web server from initiating any connections to the internal LAN. *(Figure 4.4)*
+4. **LAN2 internet access:** Configured a temporary maintenance rule allowing traffic from `LAN2 net` to the internet over the `Web_Ports` alias (`80`/`443`) to permit necessary web-based updates. The rule remained disabled until needed to maintain DMZ restrictions. *(Figure 4.4)*
 
-5. **Verified DMZ isolation:** Verified the LAN2-to-LAN1 restriction through firewall logs, which showed ping attempts from the DMZ being blocked. *(Figure 4.5)*
+5. **LAN2-to-LAN1 isolation:** Configured a rule blocking all traffic from `LAN2 net` to `LAN1 net`, preventing the DMZ web server from initiating any connections to the internal LAN. *(Figure 4.4)*
 
-6. **Published DMZ web server:** Configured a DNAT port forwarding rule on the `WAN` interface to redirect incoming HTTP traffic to `WEBSERVER01` on the DMZ network, allowing external access to the webpage. *(Figure 4.6)*
+6. **Verified DMZ isolation:** Verified the LAN2-to-LAN1 restriction through firewall logs, which showed ping attempts from the DMZ being blocked. *(Figure 4.5)*
 
-7. **Verified external access:** Accessed the DMZ web server from the host PC using the OPNsense `WAN` address, successfully displaying the custom IIS webpage. *(Figure 4.7)*
+7. **Published DMZ web server:** Configured a DNAT port forwarding rule on the `WAN` interface to redirect incoming HTTP traffic to `WEBSERVER01` on the DMZ network, allowing external access to the webpage. *(Figure 4.6)*
+
+8. **Verified external access:** Accessed the DMZ web server from the host PC using the OPNsense `WAN` address, successfully displaying the custom IIS webpage. *(Figure 4.7)*
 
 <br>
 
@@ -195,7 +197,7 @@ This lab builds upon the previous Active Directory project by deploying an OPNse
    <br>
    <b>Figure 4.3</b>
    <br><br>
-   <img width="1313" height="558" alt="LAN2_FWrules" src="https://github.com/user-attachments/assets/069e8faf-1db5-416e-bfc0-e12669820895" />
+   <img width="1863" height="514" alt="LAN2FWrules" src="https://github.com/user-attachments/assets/5cc6b0fd-21ea-4b78-9c4a-4680d7fbcf58" />
    <br>
    <b>Figure 4.4</b>
    <br><br>
@@ -203,7 +205,7 @@ This lab builds upon the previous Active Directory project by deploying an OPNse
    <br>
    <b>Figure 4.5</b>
    <br><br>
-  <img width="1330" height="468" alt="PortFowarding-FW-Webserver" src="https://github.com/user-attachments/assets/b97efbcb-7b1a-41c5-8832-85323f79d353" />
+  <img width="1893" height="471" alt="externall-access-dmz" src="https://github.com/user-attachments/assets/3c4fc79e-4682-48e2-be2f-b1388db8cd66" />
    <br>
    <b>Figure 4.6</b>
    <br><br>
