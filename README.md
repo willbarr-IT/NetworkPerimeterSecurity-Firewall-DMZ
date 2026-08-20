@@ -135,7 +135,12 @@ This lab builds upon the previous Active Directory project by deploying an OPNse
 5. **Verified allowed traffic:** Used PowerShell `Test-NetConnection` to verify that a whitelisted Microsoft domain was accessible over the configured web ports. *(Figure 3.2)*
 
 >[!NOTE]
-> I originally tried to verify access to the Microsoft domain through a web browser; however, the page did not load. Upon troubleshooting the issue, I found that Microsoft pages load additional dependencies that were not explicitly included in my `Microsoft_Updates` whitelist, resulting in the page failing to load. Therefore, I used PowerShell's `Test-NetConnection` command to verify that a direct TCP connection to the domain could be established.
+> I initially attempted to verify access to the Microsoft domain through a web browser, but the page did not load. Upon troubleshooting the issue, I found that Microsoft pages load additional external dependencies (ones not explicitly included in my `Microsoft_Updates` whitelist). Also, I could not add any wildcard domains within the alias content settings to account for those dependencies.
+>
+> Therefore, I used PowerShell's `Test-NetConnection` command to verify that a direct TCP connection to the domain could be established, demonstrating that the whitelist configuration was functioning, but not in the way I originally intended.
+>
+> All in all, the `LAN1` clients were still unable to successfully receive Windows updates. So I believe, as a future project, I will implement a WSUS server on this network as a solution. This should allow me to provide Windows updates internally while maintaining the strict **no-internet-access policy** for all `LAN1` clients.
+
 
 6. **Verified blocked traffic:** Attempted to access `facebook.com` from the `LAN1` client, confirming that traffic outside the permitted rules was blocked. *(Figure 3.3)*
 
